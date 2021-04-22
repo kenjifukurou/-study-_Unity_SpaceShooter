@@ -22,6 +22,9 @@ public class PlayerShip : MonoBehaviour
     //public AudioClip shotSound;
     AudioSource audioSource;
 
+    public int healthPoint;
+    public ParticleSystem playerShipExplodePS;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -116,5 +119,19 @@ public class PlayerShip : MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
+    }
+
+    public void TakeDamage(int amount) {
+
+        healthPoint -= amount;    
+        if (healthPoint <= 0) {
+            Instantiate(playerShipExplodePS, transform.position, transform.rotation);
+            Destroy(gameObject);
+            GameOver();
+        }
+    }
+
+    void GameOver() {
+        Debug.Log("Game Over");
     }
 }

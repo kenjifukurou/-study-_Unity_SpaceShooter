@@ -16,11 +16,18 @@ public class EnemyActions : MonoBehaviour
     public float timerMin;
     public float timerMax;
 
+    public int healthPoint;
+    public ParticleSystem bulletExplodePS;
+    public ParticleSystem shipExplodePS;
+
+    //PlayerShip player;
+
     // Start is called before the first frame update
     void Start()
     {
         changeDirection = false;
         rb = GetComponent<Rigidbody>();
+        //player = gameObject.GetComponent<PlayerShip>();
     }
 
     // Update is called once per frame
@@ -55,5 +62,29 @@ public class EnemyActions : MonoBehaviour
         }
     }
 
+    //void takeDamage() {
+
+    //}
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.tag == "Player") {
+            other.gameObject.GetComponent<PlayerShip>().TakeDamage(100);
+            healthPoint -= 100;
+            if (healthPoint <=0) {
+                Instantiate(shipExplodePS, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+        }
+        if (other.gameObject.tag == "PlayerBullet") {
+            //Debug.Log("collision happened");
+            healthPoint--;
+            Instantiate(bulletExplodePS, other.transform.position, other.transform.rotation);
+            Destroy(other.gameObject);
+            if (healthPoint <= 0) {
+                Instantiate(shipExplodePS, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
+        }        
+    }
 
 }

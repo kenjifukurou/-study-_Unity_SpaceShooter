@@ -243,7 +243,10 @@ MonoBehaviour:
   GunLeft: {fileID: 7277027821267621601}
   GunRight: {fileID: 9075036683150541006}
   bulletSpeed: 100
-  powerUp: 1
+  power: 1
+  healthPoint: 100
+  playerShipExplodePS: {fileID: 5625741384821734166, guid: eae6a74b339a91a4d85d6e7829728eff,
+    type: 3}
 --- !u!82 &7924735208283141148
 AudioSource:
   m_ObjectHideFlags: 0

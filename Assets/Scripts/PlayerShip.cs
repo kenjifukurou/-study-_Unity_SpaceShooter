@@ -17,7 +17,7 @@ public class PlayerShip : MonoBehaviour
     private float bulletSpeed;
 
     [SerializeField]
-    private int powerUp = 1;
+    private int power = 1;
 
     //public AudioClip shotSound;
     AudioSource audioSource;
@@ -73,7 +73,7 @@ public class PlayerShip : MonoBehaviour
             // play sound
             audioSource.Play();
             //shoot bullet base on power level
-            switch (powerUp) {
+            switch (power) {
                 case 1:
                     // 1 bullet
                     GameObject bullet1 = Instantiate(playerBullet, GunCenter.position, GunCenter.rotation);
@@ -98,6 +98,22 @@ public class PlayerShip : MonoBehaviour
                 default:
                     // 1 bullet;
                     break;
+            }
+        }
+    }
+
+    void OnTriggerEnter(Collider other) {
+        //Debug.Log("collision happen");
+        if (other.gameObject.tag == "PowerUp") {
+            if (power < 3) {
+                power++;
+                Destroy(other.gameObject);
+            }
+        }
+        if (other.gameObject.tag == "PowerDown") {
+            if (power > 1) {
+                power--;
+                Destroy(other.gameObject);
             }
         }
     }

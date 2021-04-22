@@ -155,3 +155,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 3
+  explodeParticle: {fileID: 5625741384821734166, guid: 73bc26bfeab90fa429593c49ccb1bd83,
+    type: 3}

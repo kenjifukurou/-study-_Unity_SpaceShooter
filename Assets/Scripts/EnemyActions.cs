@@ -20,6 +20,8 @@ public class EnemyActions : MonoBehaviour
     public ParticleSystem bulletExplodePS;
     public ParticleSystem shipExplodePS;
 
+    public MapLimit mapLimit;
+
     //PlayerShip player;
 
     // Start is called before the first frame update
@@ -34,6 +36,7 @@ public class EnemyActions : MonoBehaviour
     void Update()
     {
         movement();
+        movementLimit();
         changesDirectionToggle();
 
     }
@@ -46,6 +49,14 @@ public class EnemyActions : MonoBehaviour
         } else {
             rb.velocity = new Vector3(-movementValueH, 0, movementValueV);
         }
+    }
+
+    void movementLimit() {
+        transform.position = new Vector3(
+                Mathf.Clamp(transform.position.x, mapLimit.minimumX, mapLimit.maximumX),
+                0.0f,
+                Mathf.Clamp(transform.position.z, mapLimit.minimumZ, mapLimit.maximumZ)
+            );
     }
 
     void changesDirectionToggle() {

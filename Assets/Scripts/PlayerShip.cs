@@ -8,9 +8,24 @@ public class PlayerShip : MonoBehaviour
 
     public MapLimit mapLimit;
 
+    public GameObject playerBullet;
+    public Transform GunCenter;
+    public Transform GunLeft;
+    public Transform GunRight;
+
+    [SerializeField]
+    private float bulletSpeed;
+
+    [SerializeField]
+    private int powerUp = 1;
+
+    //public AudioClip shotSound;
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         
     }
 
@@ -18,7 +33,8 @@ public class PlayerShip : MonoBehaviour
     void Update()
     {
         Movement();
-        
+        ShootNormal();
+
     }
 
     void Movement() {
@@ -50,5 +66,39 @@ public class PlayerShip : MonoBehaviour
                 0.0f,
                 Mathf.Clamp(transform.position.z, mapLimit.minimumZ, mapLimit.maximumZ)
             );
+    }
+
+    void ShootNormal() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            // play sound
+            audioSource.Play();
+            //shoot bullet base on power level
+            switch (powerUp) {
+                case 1:
+                    // 1 bullet
+                    GameObject bullet1 = Instantiate(playerBullet, GunCenter.position, GunCenter.rotation);
+                    bullet1.GetComponent<Rigidbody>().velocity = Vector3.forward * bulletSpeed;
+                    break;
+                case 2:
+                    // 2 bullet
+                    GameObject bullet2A = Instantiate(playerBullet, GunLeft.position, GunCenter.rotation);
+                    GameObject bullet2B = Instantiate(playerBullet, GunRight.position, GunCenter.rotation);
+                    bullet2A.GetComponent<Rigidbody>().velocity = Vector3.forward * bulletSpeed;
+                    bullet2B.GetComponent<Rigidbody>().velocity = Vector3.forward * bulletSpeed;
+                    break;
+                case 3:
+                    // 3 bullet
+                    GameObject bullet3A = Instantiate(playerBullet, GunCenter.position, GunCenter.rotation);
+                    GameObject bullet3B = Instantiate(playerBullet, GunLeft.position, GunCenter.rotation);
+                    GameObject bullet3C = Instantiate(playerBullet, GunRight.position, GunCenter.rotation);
+                    bullet3A.GetComponent<Rigidbody>().velocity = Vector3.forward * bulletSpeed;
+                    bullet3B.GetComponent<Rigidbody>().velocity = Vector3.forward * bulletSpeed;
+                    bullet3C.GetComponent<Rigidbody>().velocity = Vector3.forward * bulletSpeed;
+                    break;
+                default:
+                    // 1 bullet;
+                    break;
+            }
+        }
     }
 }

@@ -221,11 +221,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1445583290761642148, guid: 1f3475b90135f6249abc82b641ef57f2,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8374724049162420885, guid: 1f3475b90135f6249abc82b641ef57f2,
         type: 3}
       propertyPath: m_Name
@@ -239,7 +234,7 @@ PrefabInstance:
     - target: {fileID: 9183736336242120751, guid: 1f3475b90135f6249abc82b641ef57f2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -41.9
+      value: -30.7
       objectReference: {fileID: 0}
     - target: {fileID: 9183736336242120751, guid: 1f3475b90135f6249abc82b641ef57f2,
         type: 3}
@@ -387,11 +382,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6856021600065819845, guid: 7fb9782abbac2ba4b8b524c19d41ccdf,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7068979795060237009, guid: 7fb9782abbac2ba4b8b524c19d41ccdf,
         type: 3}
       propertyPath: m_RootOrder
@@ -577,7 +567,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397720959}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -638,11 +628,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2698971745422848686, guid: 0e79a96c354dfaf419c98cb17a73eb77,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7046262019060924722, guid: 0e79a96c354dfaf419c98cb17a73eb77,
         type: 3}
       propertyPath: m_RootOrder
